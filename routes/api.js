@@ -28,20 +28,28 @@ const gptt355turbo = {
   }
 };
 router.get('/api/ai/gptturbo', async (req, res) => {
+  const query = req.query.query;
+  const apikey = req.query.apikey;
+
+  if (!query) return res.json(global.status.query);
+  if (!apikey) return res.json(global.status.apikey);
+  if (!global.apikey.includes(apikey)) return res.json(global.status.invalidKey);
+
   try {
-    const query = req.query.query;
-    if (!query) {
-      return res.status(400).json({ error: "Query parameter is missing." });
-    }
     const response = await gptt355turbo.send(query);
-    res.status(200).json({
+    res.header('Content-Type: application/json');
+    res.type('json').send(JSON.stringify({
       status: 200,
       creator: "RiooXdzz",
-      data: { response },
-    });
+      data: { response }
+    }, null, 2));
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error("Error in /api/ai/gptturbo:", error.message);
+
+    res.json(global.status.error || { 
+      status: 500, 
+      error: "Internal Server Error" 
+    });
   }
 });
 router.get('/video', async (req, res) => {
