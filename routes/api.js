@@ -30,22 +30,8 @@ const gptt355turbo = {
 router.get('/api/ai/gptturbo', async (req, res) => {
   try {
     const query = req.query.query;
-    const apikey = req.query.apikey;
-
     if (!query) {
       return res.status(400).json({ error: global.status.query || "Query parameter is missing." });
-    }
-
-    if (!apikey) {
-      return res.status(403).json({ error: global.status.apikey || "API key is missing." });
-    }
-
-    if (!Array.isArray(global.apikey)) {
-      return res.status(500).json({ error: "API key list is not properly configured." });
-    }
-
-    if (!global.apikey.includes(apikey)) {
-      return res.status(403).json(global.status.invalidKey || { error: "Invalid API key." });
     }
 
     const response = await gptt355turbo.send(query);
