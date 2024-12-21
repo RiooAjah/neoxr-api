@@ -1,6 +1,9 @@
 const axios = require('axios');
 
-let express = require('express'), router = express.Router(), yt = require('../lib/search')
+const express = require('express');
+const yt = require('../lib/search')
+const router = express.Router();
+
 const gptt355turbo = {
   send: async (message, model = "gpt-3.5-turbo") => {
     try {
@@ -29,29 +32,20 @@ const gptt355turbo = {
     }
   }
 };
-router.get('/api/gptturbo', async (req, res) => {
-  const query = req.query.query;
-  const apikey = req.query.apikey;
-
-  if (!query) return res.json(global.status.query);
-  if (!apikey) return res.json(global.status.apikey);
-  if (!global.apikey.includes(apikey)) return res.json(global.status.invalidKey);
-
+app.get('/api/gptturbo', async (req, res) => {
   try {
+    const query = req.query.message;
+    if (!query) {
+      return res.status(400).json({ error: 'Parameter "text" tidak ditemukan' });
+    }
     const response = await gptt355turbo.send(query);
-    res.header('Content-Type: application/json');
-    res.type('json').send(JSON.stringify({
+    res.status(200).json({
       status: 200,
       creator: "RiooXdzz",
       data: { response }
-    }, null, 2));
-  } catch (error) {
-    console.error("Error in /api/ai/gptturbo:", error.message);
-
-    res.json(global.status.error || { 
-      status: 500, 
-      error: "Internal Server Error" 
     });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 router.get('/video', async (req, res) => {
