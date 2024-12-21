@@ -31,22 +31,33 @@ router.get('/api/ai/gptturbo', async (req, res) => {
   try {
     const query = req.query.query;
     const apikey = req.query.apikey;
-   
+
     if (!query) {
-      return res.status(400).json(global.status.query)
+      return res.status(400).json({ error: global.status.query || "Query parameter is missing." });
     }
-     if (!apikey) {
-      return res.status(403).json(global.status.apikey)
+
+    if (!apikey) {
+      return res.status(403).json({ error: global.status.apikey || "API key is missing." });
     }
-    if (!global.apikey.includes(apikey)) return res.json(global.status.invalidKey)
+
+    if (!Array.isArray(global.apikey)) {
+      return res.status(500).json({ error: "API key list is not properly configured." });
+    }
+
+    if (!global.apikey.includes(apikey)) {
+      return res.status(403).json(global.status.invalidKey || { error: "Invalid API key." });
+    }
+
     const response = await gptt355turbo.send(query);
+
     res.status(200).json({
       status: 200,
       creator: "RiooXdzz",
-      data: { response }
+      data: { response },
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 router.get('/video', async (req, res) => {
