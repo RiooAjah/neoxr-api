@@ -30,13 +30,13 @@ const gptt355turbo = {
 router.get('/api/ai/gptturbo', async (req, res) => {
   try {
     const query = req.query.query;
-    const apikey = req.query.apikey
+    const apikey = req.query.apikey;
    
     if (!query) {
       return res.status(400).json(global.status.query)
     }
      if (!apikey) {
-      return res.status(408).json(global.status.apikey)
+      return res.status(403).json(global.status.apikey)
     }
     if (!global.apikey.includes(apikey)) return res.json(global.status.invalidKey)
     const response = await gptt355turbo.send(query);
