@@ -32,7 +32,7 @@ const gptt355turbo = {
     }
   }
 };
-app.get('/api/gptturbo', async (req, res) => {
+router.get('/api/gptturbo', async (req, res) => {
   try {
     const query = req.query.message;
     if (!query) {
