@@ -2,8 +2,8 @@ let express = require('express'), path = require('path'), cookieParser = require
 let indexRouter = require('./routes/index'), apiRouter = require('./routes/api')
 let PORT = process.env.PORT || 8080
 
-global.creator = '@neoxrs – Wildan Izzudin'
-global.apikey = [ 'Katashi' ] // ApiKey
+global.creator = '@ Rioo?'
+global.apikey = [ 'RiooAjah' ] // ApiKey
 global.status = {
 	query: {
         creator: global.creator,
