@@ -29,7 +29,7 @@ const gptt355turbo = {
     }
   }
 };
-router.get('/api/ai/gptturbo', async (req, res) => {
+router.get('/api/gptturbo', async (req, res) => {
   const query = req.query.query;
   const apikey = req.query.apikey;
 
