@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 let express = require('express'), router = express.Router(), yt = require('../lib/search')
 const gptt355turbo = {
   send: async (message, model = "gpt-3.5-turbo") => {
