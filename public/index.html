@@ -1,24 +1,46 @@
 <!doctype html>
 <html>
 <head>
-    <title> KATASHI API </title>
-    <meta name="description" content="Free Rest API for various purposes, use Katashi as apikey.">
+    <title> Rioo API </title>
+    <meta name="description" content="Free Rest API for various purposes, use Rioo as apikey.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <!-- Facebook -->
-    <meta property="og:title" content="Wildan Izzudin" />
+    <meta property="og:title" content="Rioo?" />
     <meta property="og:url" content="https://api.Katashi.eu.org" />
-    <meta property="og:site_name" content="Katashi's API" />
+    <meta property="og:site_name" content="Rioo API" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Free Rest API for various purposes, use Katashi as apikey." />
+    <meta property="og:description" content="Free Rest API for various purposes, use Rioo as apikey." />
     <meta property="og:image" content="/image/logo.png" />
     <!-- CSS -->
     <link href='/css/styles.css' rel='stylesheet'>
     <link href='/css/animate.css' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <style>
+        /* Posisi tombol di pojok kiri */
+        .corner-button {
+            position: absolute;
+            top: 10px; /* Jarak dari atas */
+            left: 10px; /* Jarak dari kiri */
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .corner-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Tombol di pojok kiri -->
+    <button class="corner-button" onclick="alert('Hello!')">Click Me</button>
+
     <div class="center">
         <h1 class="animated strobe"> Katashi API </h1>
         <div class="description">
@@ -28,8 +50,8 @@
             <form>
                 <div class="select">
                     <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                     <option value="" selected disabled>--- API LIST ---</option>
-                     <option value="/api/palingmurah?produk=diamond&apikey=palingmurah">Music</option>
+                     <option value="" selected disabled>--- AI ---</option>
+                     <option value="/api/ai/gptturbo?query=hallo&apikey=MASUKAN APIKEY">Gptturbo</option>
                      <option value="/api/video?q=drxgs&apikey=Katashi">Video</option>
                      <option value="/api/yta?url=https://youtu.be/SRQmwK8Z5Nw&apikey=Katashi">Youtube MP3</option>
                      <option value="/api/ytv?url=https://youtu.be/SRQmwK8Z5Nw&apikey=Katashi">Youtube MP4</option>
@@ -40,7 +62,7 @@
             </form>
         </div>
         <div class="links">
-            <a href="https://github.com/Katashi/Katashi-api">Made by <b>KATASHI HANA</b></a>
+            <a href="https://github.com/riooxdzzz">Made by <b>Rioo?</b></a>
             <span class="divider"></span>
         </div>
     </div>
