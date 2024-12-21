@@ -31,11 +31,9 @@ router.get('/api/ai/gptturbo', async (req, res) => {
   try {
     const query = req.query.query;
     if (!query) {
-      return res.status(400).json({ error: global.status.query || "Query parameter is missing." });
+      return res.status(400).json({ error: "Query parameter is missing." });
     }
-
     const response = await gptt355turbo.send(query);
-
     res.status(200).json({
       status: 200,
       creator: "RiooXdzz",
